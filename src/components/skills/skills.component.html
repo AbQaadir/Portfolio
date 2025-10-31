@@ -1,0 +1,37 @@
+<section id="skills" class="py-24">
+  <div class="flex items-center mb-12">
+    <h2 class="text-2xl lg:text-3xl font-bold text-slate-100 font-mono">
+      <span class="text-teal-400-custom text-xl lg:text-2xl">03.</span>
+      Skills
+    </h2>
+    <div class="ml-4 h-px flex-grow bg-slate-700"></div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-8 min-h-[200px]">
+    <!-- Tabs -->
+    <div class="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b-2 md:border-b-0 md:border-l-2 border-slate-700">
+      @for (category of skillCategories(); track category.name; let i = $index) {
+        <button (click)="selectCategory(i)"
+                [class]="'px-4 py-3 text-sm font-mono whitespace-nowrap text-left transition-all duration-300 ' + (selectedCategoryIndex() === i ? 'text-teal-400-custom bg-slate-800-custom border-b-2 md:border-b-0 md:border-l-2 border-teal-400-custom' : 'text-slate-400 hover:bg-slate-800-custom/50 hover:text-teal-400-custom')">
+          {{ category.name }}
+        </button>
+      }
+    </div>
+
+    <!-- Content -->
+    <div class="flex-grow">
+      @if (skillCategories()[selectedCategoryIndex()]; as selectedCategory) {
+        <div>
+          <ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-4">
+            @for (skill of selectedCategory.skills; track skill.name) {
+              <li class="flex items-center">
+                <img [src]="skill.iconUrl" [alt]="skill.name + ' logo'" class="w-5 h-5 mr-3 object-contain" [class.invert-on-dark]="skill.needsInvert">
+                <span class="text-slate-400">{{ skill.name }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>

@@ -1,0 +1,41 @@
+<section id="experience" class="py-24">
+  <div class="flex items-center mb-12">
+    <h2 class="text-2xl lg:text-3xl font-bold text-slate-100 font-mono">
+      <span class="text-teal-400-custom text-xl lg:text-2xl">02.</span>
+      Where I’ve Worked
+    </h2>
+    <div class="ml-4 h-px flex-grow bg-slate-700"></div>
+  </div>
+
+  <div class="flex flex-col md:flex-row gap-8 min-h-[300px]">
+    <!-- Tabs -->
+    <div class="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b-2 md:border-b-0 md:border-l-2 border-slate-700">
+      @for (job of jobs(); track job.company; let i = $index) {
+        <button (click)="selectJob(i)"
+                [class]="'px-4 py-3 text-sm font-mono whitespace-nowrap text-left transition-all duration-300 ' + (selectedJobIndex() === i ? 'text-teal-400-custom bg-slate-800-custom border-b-2 md:border-b-0 md:border-l-2 border-teal-400-custom' : 'text-slate-400 hover:bg-slate-800-custom/50 hover:text-teal-400-custom')">
+          {{ job.company }}
+        </button>
+      }
+    </div>
+
+    <!-- Content -->
+    <div class="flex-grow">
+      @if (jobs()[selectedJobIndex()]; as selectedJob) {
+        <div>
+          <h3 class="text-xl font-bold text-slate-100">
+            {{ selectedJob.role }} <span class="text-teal-400-custom">@ {{ selectedJob.company }}</span>
+          </h3>
+          <p class="font-mono text-sm text-slate-400 mt-1 mb-6">{{ selectedJob.period }}</p>
+          <ul class="space-y-3">
+            @for (task of selectedJob.tasks; track task) {
+              <li class="flex items-start">
+                <span class="text-teal-400-custom mr-3 mt-1">▹</span>
+                <span class="text-slate-400">{{ task }}</span>
+              </li>
+            }
+          </ul>
+        </div>
+      }
+    </div>
+  </div>
+</section>
