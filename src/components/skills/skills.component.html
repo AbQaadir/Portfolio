@@ -7,7 +7,7 @@
     <div class="ml-4 h-px flex-grow bg-slate-700"></div>
   </div>
 
-  <div class="flex flex-col md:flex-row gap-8 min-h-[200px]">
+  <div class="flex flex-col md:flex-row gap-8 min-h-[300px]">
     <!-- Tabs -->
     <div class="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b-2 md:border-b-0 md:border-l-2 border-slate-700">
       @for (category of skillCategories(); track category.name; let i = $index) {
@@ -22,11 +22,11 @@
     <div class="flex-grow">
       @if (skillCategories()[selectedCategoryIndex()]; as selectedCategory) {
         <div>
-          <ul class="grid grid-cols-2 sm:grid-cols-3 gap-x-8 gap-y-4">
+          <ul class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-x-8 gap-y-6">
             @for (skill of selectedCategory.skills; track skill.name) {
-              <li class="flex items-center">
-                <img [src]="skill.iconUrl" [alt]="skill.name + ' logo'" class="w-5 h-5 mr-3 object-contain" [class.invert-on-dark]="skill.needsInvert">
-                <span class="text-slate-400">{{ skill.name }}</span>
+              <li class="flex flex-col items-center text-center">
+                <img [src]="skill.iconUrl" [alt]="skill.name + ' logo'" class="h-8 w-8 mb-2 object-contain" [class.invert-on-dark]="skill.needsInvert">
+                <span class="text-slate-400 text-sm">{{ skill.name }}</span>
               </li>
             }
           </ul>

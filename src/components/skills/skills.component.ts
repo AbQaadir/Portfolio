@@ -59,7 +59,7 @@ export class SkillsComponent {
         { name: 'Pandas', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/pandas/pandas-original.svg' },
         { name: 'CrewAI', iconUrl: 'https://avatars.githubusercontent.com/u/170677839?s=48&v=4' },
         { name: 'PySpark', iconUrl: 'https://avatars.githubusercontent.com/u/47359?s=48&v=4' },
-        { name: 'Matplotlib', iconUrl: 'https://matplotlib.org/_static/images/logo2.svg', needsInvert: true },
+        { name: 'Matplotlib', iconUrl: 'https://matplotlib.org/stable/_static/logo_dark.svg', needsInvert: true },
         { name: 'NumPy', iconUrl: 'https://cdn.jsdelivr.net/gh/devicons/devicon/icons/numpy/numpy-original.svg' },
         { name: 'NLTK', iconUrl: 'https://avatars.githubusercontent.com/u/124114?s=48&v=4' },
         { name: 'OpenCV', iconUrl: 'https://opencv.org/wp-content/uploads/2020/07/cropped-OpenCV_logo_white_600x.png' },
