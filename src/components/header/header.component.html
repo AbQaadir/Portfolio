@@ -1,13 +1,14 @@
 <header class="fixed top-0 z-50 w-full backdrop-blur-sm bg-[#0a192f]/80 shadow-md">
   <nav class="flex items-center justify-between px-6 py-4 max-w-screen-xl mx-auto">
     <div class="text-teal-400-custom text-2xl font-mono font-bold">
-      <a href="/" class="hover:text-teal-400-custom transition-colors duration-300">AQ</a>
+      <a href="/" class="hover:text-teal-400-custom transition-colors duration-300">🤖</a>
     </div>
     <div class="hidden md:flex items-center space-x-6 text-sm text-slate-300">
       @for (link of navLinks; track link.name; let i = $index) {
-        <a href="{{ link.url }}" (click)="scrollTo($event, link.url)" class="hover:text-teal-400-custom transition-colors duration-300 font-mono">
-          <span class="text-teal-400-custom">0{{ i + 1 }}.</span> {{ link.name }}
-        </a>
+      <a href="{{ link.url }}" (click)="scrollTo($event, link.url)"
+        class="hover:text-teal-400-custom transition-colors duration-300 font-mono">
+        <span class="text-teal-400-custom">0{{ i + 1 }}.</span> {{ link.name }}
+      </a>
       }
       <!-- <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="font-mono text-teal-400-custom border border-teal-400-custom rounded px-4 py-2 hover-bg-teal-400-custom transition-all duration-300">
         Resume
@@ -19,9 +20,9 @@
       <button (click)="toggleMenu()" class="text-teal-400-custom focus:outline-none">
         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
           @if (!isMenuOpen()) {
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
           } @else {
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
           }
         </svg>
       </button>
@@ -30,21 +31,23 @@
 
   <!-- Mobile Menu -->
   @if (isMenuOpen()) {
-    <div class="md:hidden bg-slate-800-custom p-6">
-      <ul class="flex flex-col items-center space-y-6 text-slate-300">
-        @for (link of navLinks; track link.name; let i = $index) {
-          <li>
-            <a href="{{ link.url }}" (click)="scrollTo($event, link.url)" class="hover:text-teal-400-custom transition-colors duration-300 font-mono">
-              <span class="text-teal-400-custom">0{{ i + 1 }}.</span> {{ link.name }}
-            </a>
-          </li>
-        }
-        <li>
-          <a href="/resume.pdf" target="_blank" rel="noopener noreferrer" class="font-mono text-teal-400-custom border border-teal-400-custom rounded px-8 py-3 hover-bg-teal-400-custom transition-all duration-300">
-            Resume
-          </a>
-        </li>
-      </ul>
-    </div>
+  <div class="md:hidden bg-slate-800-custom p-6">
+    <ul class="flex flex-col items-center space-y-6 text-slate-300">
+      @for (link of navLinks; track link.name; let i = $index) {
+      <li>
+        <a href="{{ link.url }}" (click)="scrollTo($event, link.url)"
+          class="hover:text-teal-400-custom transition-colors duration-300 font-mono">
+          <span class="text-teal-400-custom">0{{ i + 1 }}.</span> {{ link.name }}
+        </a>
+      </li>
+      }
+      <li>
+        <a href="/resume.pdf" target="_blank" rel="noopener noreferrer"
+          class="font-mono text-teal-400-custom border border-teal-400-custom rounded px-8 py-3 hover-bg-teal-400-custom transition-all duration-300">
+          Resume
+        </a>
+      </li>
+    </ul>
+  </div>
   }
 </header>
