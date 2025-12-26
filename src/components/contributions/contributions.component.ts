@@ -45,6 +45,22 @@ export class ContributionsComponent {
       name: 'Blog',
       items: [
         {
+          title: 'Ballerina Swan Lake meets Google Gemini',
+          date: 'Dec 25, 2025',
+          readTime: '11 min read',
+          description: 'Integrate Gemini’s LLM capabilities into your Ballerina cloud-native services. This connector provides a type-safe, seamless bridge to Google’s most capable models.',
+          tags: ['Ballerina', 'Google Gemini', 'LLM', 'Cloud Native'],
+          url: 'https://medium.com/@qaadireng/ballerina-swan-lake-meets-google-gemini-d4185d41b53c'
+        },
+        {
+          title: 'Deep Dive in to GLIGEN',
+          date: 'Dec 19, 2025',
+          readTime: '2 min read',
+          description: 'GLIGEN (Grounded Language-Image Generation) is a technique built on top of existing text-to-image models that enables precise spatial control over image generation.',
+          tags: ['Deep Learning', 'Generative AI', 'GLIGEN'],
+          url: 'https://medium.com/@qaadireng/deep-dive-in-to-gligen-a2d24d206f36'
+        },
+        {
           title: 'From Natural Language to Precise Diagrams',
           date: 'June 22, 2023',
           readTime: '10 min read',
@@ -77,7 +93,7 @@ export class ContributionsComponent {
         {
           title: 'Gemini Connector Creation',
           platform: 'Ballerina Platform',
-          url: 'https://github.com/ballerina-platform/ballerina-library/issues/7234',
+          url: 'https://central.ballerina.io/qaadir/gemini/3.5.6',
           points: [
             'Developed a new Gemini Connector for Ballerina Central, enabling seamless integration with Google’s Gemini LLM API.',
             'Implemented connector schema definitions, authentication, and endpoint configurations aligned with Ballerina’s standard connector framework.'

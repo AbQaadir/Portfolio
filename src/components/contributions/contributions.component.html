@@ -9,64 +9,72 @@
 
   <div class="flex flex-col md:flex-row gap-8 min-h-[300px]">
     <!-- Tabs -->
-    <div class="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b-2 md:border-b-0 md:border-l-2 border-slate-700">
+    <div
+      class="flex md:flex-col overflow-x-auto md:overflow-x-visible border-b-2 md:border-b-0 md:border-l-2 border-slate-700">
       @for (category of categories(); track category.name; let i = $index) {
-        <button (click)="selectCategory(i)"
-                [class]="'px-4 py-3 text-sm font-mono whitespace-nowrap text-left transition-all duration-300 ' + (selectedCategoryIndex() === i ? 'text-teal-400-custom bg-slate-800-custom border-b-2 md:border-b-0 md:border-l-2 border-teal-400-custom' : 'text-slate-400 hover:bg-slate-800-custom/50 hover:text-teal-400-custom')">
-          {{ category.name }}
-        </button>
+      <button (click)="selectCategory(i)"
+        [class]="'px-4 py-3 text-sm font-mono whitespace-nowrap text-left transition-all duration-300 ' + (selectedCategoryIndex() === i ? 'text-teal-400-custom bg-slate-800-custom border-b-2 md:border-b-0 md:border-l-2 border-teal-400-custom' : 'text-slate-400 hover:bg-slate-800-custom/50 hover:text-teal-400-custom')">
+        {{ category.name }}
+      </button>
       }
     </div>
 
     <!-- Content -->
     <div class="flex-grow">
       @if (categories()[selectedCategoryIndex()]; as selectedCategory) {
-        <div class="space-y-8">
-            @for(item of selectedCategory.items; track item.title) {
-                @if (isBlog(item)) {
-                    <div class="bg-slate-800-custom p-6 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300">
-                        <h3 class="text-xl font-bold text-slate-100 hover:text-teal-400-custom transition-colors duration-300">
-                            <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
-                        </h3>
-                        <p class="font-mono text-sm text-slate-400 mt-1 mb-4">{{ item.date }} | {{ item.readTime }}</p>
-                        <p class="text-slate-400 mb-4">{{ item.description }}</p>
-                        <div class="flex flex-wrap gap-2">
-                            @for(tag of item.tags; track tag) {
-                                <span class="bg-slate-700 text-teal-400-custom text-xs font-mono px-2 py-1 rounded-full">{{ tag }}</span>
-                            }
-                        </div>
-                        <a [href]="item.url" target="_blank" rel="noopener noreferrer" class="inline-block mt-4 font-mono text-sm text-teal-400-custom hover:underline">
-                            Read Article &rarr;
-                        </a>
-                    </div>
-                }
-                @if (isContribution(item)) {
-                    <div class="p-1">
-                        <h3 class="text-xl font-bold text-slate-100">
-                            {{ item.title }} 
-                            <span class="text-teal-400-custom">
-                                @ @if(item.url !== '#') {
-                                    <a [href]="item.url" target="_blank" rel="noopener noreferrer" class="hover:underline">{{ item.platform }}</a>
-                                } @else {
-                                    <span>{{ item.platform }}</span>
-                                }
-                            </span>
-                        </h3>
-                        @if(item.role && item.year) {
-                           <p class="font-mono text-sm text-slate-400 mt-1 mb-6">{{item.role}} - {{item.year}}</p>
-                        }
-                        <ul class="space-y-3 mt-4">
-                            @for (point of item.points; track point) {
-                            <li class="flex items-start">
-                                <span class="text-teal-400-custom mr-3 mt-1">▹</span>
-                                <span class="text-slate-400">{{ point }}</span>
-                            </li>
-                            }
-                        </ul>
-                    </div>
-                }
+      <div class="space-y-8">
+        @for(item of selectedCategory.items; track item.title) {
+        @if (isBlog(item)) {
+        <div class="bg-slate-800-custom p-6 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300">
+          <h3 class="text-xl font-bold text-slate-100 hover:text-teal-400-custom transition-colors duration-300">
+            <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+          </h3>
+          <p class="font-mono text-sm text-slate-400 mt-1 mb-4">{{ item.date }} | {{ item.readTime }}</p>
+          <p class="text-slate-400 mb-4">{{ item.description }}</p>
+          <div class="flex flex-wrap gap-2">
+            @for(tag of item.tags; track tag) {
+            <span class="bg-slate-700 text-teal-400-custom text-xs font-mono px-2 py-1 rounded-full">{{ tag }}</span>
             }
+          </div>
+          <a [href]="item.url" target="_blank" rel="noopener noreferrer"
+            class="inline-block mt-4 font-mono text-sm text-teal-400-custom hover:underline">
+            Read Article &rarr;
+          </a>
         </div>
+        }
+        @if (isContribution(item)) {
+        <div
+          class="bg-slate-800-custom p-6 rounded-md shadow-lg hover:shadow-xl transition-shadow duration-300 h-full flex flex-col">
+          <h3 class="text-xl font-bold text-slate-100 hover:text-teal-400-custom transition-colors duration-300">
+            @if(item.url !== '#') {
+            <a [href]="item.url" target="_blank" rel="noopener noreferrer">{{ item.title }}</a>
+            } @else {
+            <span>{{ item.title }}</span>
+            }
+          </h3>
+          <p class="font-mono text-sm text-slate-400 mt-1 mb-4">
+            {{ item.platform }}
+            @if(item.role) { <span> | {{ item.role }}</span> }
+            @if(item.year) { <span> | {{ item.year }}</span> }
+          </p>
+          <ul class="space-y-2 mb-4 text-slate-400 text-sm flex-grow">
+            @for (point of item.points; track point) {
+            <li class="flex items-start">
+              <span class="text-teal-400-custom mr-2">▹</span>
+              <span>{{ point }}</span>
+            </li>
+            }
+          </ul>
+          @if(item.url !== '#') {
+          <a [href]="item.url" target="_blank" rel="noopener noreferrer"
+            class="inline-block mt-auto font-mono text-sm text-teal-400-custom hover:underline">
+            View Project &rarr;
+          </a>
+          }
+        </div>
+        }
+        }
+      </div>
       }
     </div>
   </div>
